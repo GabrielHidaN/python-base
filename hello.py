@@ -18,7 +18,7 @@ Execução:
 """
 
 #dunder
-__version__ = "0.0.1"
+__version__ = "0.1.2"
 __author__ = "Gabriel Victor"
 __license__ = "Unlincese"
 
@@ -26,8 +26,22 @@ import os
 
 current_language = os.getenv("LANG", "en_US")[:5]
 
-msg = "Hello, World"
 
+# sets (hash table) --> O(1) --> constante
+# dicts (hash table)
+
+msg = {
+    "en_US": "Hello, World!",
+    "pt_BR": "Olá, Mundo!",
+    "it_IT": "Ciao, Mondo!",
+    "es_SP": "Hola, Mundo!",
+    "fr_FR": "Bonjour, Monde!",
+}
+
+
+
+#Ordem complexidade O(n)
+"""
 if current_language == "pt_BR":
     msg = "Olá, Mundo!"
 elif current_language == "it_IT":
@@ -36,5 +50,5 @@ elif current_language == "es_SP":
     msg = "Hola, Mundo!"
 elif current_language == "fr_FR":
     msg = "Bonjour Monde!"
-
-print(msg)
+"""
+print(msg[current_language])
