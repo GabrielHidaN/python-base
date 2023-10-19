@@ -9,6 +9,8 @@ Tenha a variavel LANG devidamente configurada ex:
 
     export LANG=pt_BR
 
+    Ou informe atraves do CLI argument `--lang`
+
 Execução:
 
     python3 hello.py
@@ -23,9 +25,29 @@ __author__ = "Gabriel Victor"
 __license__ = "Unlincese"
 
 import os
+import sys
 
-current_language = os.getenv("LANG", "en_US")[:5]
+arguments = {"lang": None,"count": 1}
 
+for arg in sys.argv[1:]:
+    # TODO: tratar ValueError
+    key, value = arg.split("=")
+    key = key.lstrip("-").strip()
+    value = value.strip()
+
+    if key not in arguments:
+        print(f"Invalid Option `{key}`")
+        sys.exit()
+    arguments[key] = value
+
+current_language = arguments["lang"]
+if current_language is None:
+    current_language= os.getenv("LANG")
+    # TODO: Usar repetição
+    if current_language is None:
+        current_language = input("Choose a Language: ")
+
+current_language = current_language[:5]
 
 # sets (hash table) --> O(1) --> constante
 # dicts (hash table)
@@ -51,4 +73,6 @@ elif current_language == "es_SP":
 elif current_language == "fr_FR":
     msg = "Bonjour Monde!"
 """
-print(msg[current_language])
+print(
+    msg[current_language] * int(arguments["count"])
+      )
