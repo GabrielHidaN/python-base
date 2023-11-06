@@ -1,0 +1,10 @@
+MInha primeira Nota
+	geral	minha primeira nota	
+minha segunda nota
+	tech	python é legal	
+Minha primeira nota
+	geral	minha primeira nota
+Minha segunda nota
+	tech	python é legal
+Minha terceira nota
+	tech	php tbm é legal
